@@ -25,16 +25,3 @@ export default function connect() {
 //     eventType: "serverReady"
 // }
 
-export function subscribeToServerStatus(server: string, update: (status: boolean) => void) {
-    socket.addEventListener("message", (event) => {
-        const data = JSON.parse(event.data);
-        if (data.eventType == "serverReady" && data.server == server) {
-            update(true)
-        }else if (data.eventType == "serverClose" && data.server == server) {
-            update(false)
-        }
-    });
-}
-function unSubscribeToServerStatus() {
-    
-}

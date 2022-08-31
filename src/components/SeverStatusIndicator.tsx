@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
-import { subscribeToServerStatus } from "../utils/connectWS";
+import { ServerStatus, subscribeToServerStatus, unSubscribeFromServerStatus } from "../utils/serverStatus";
 
 export default function ServerStatusIndicator(props: { server: string }) {
 
-    const [isJoinable, setIsJoinable] = useState(false);
+    const [serverStatus, setServerStatus] = useState(ServerStatus.Offline);
 
     useEffect(() => {
-        function handleStatusChange(status: boolean) {
-            setIsJoinable(status);
+        function handleStatusChange(status: ServerStatus) {
+            setServerStatus(status);
         }
         subscribeToServerStatus(props.server, handleStatusChange);
-        // Specify how to clean up after this effect:
         return function cleanup() {
-            // ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+            unSubscribeFromServerStatus(props.server, handleStatusChange);
         };
     });
 
     return (
-        <p>{isJoinable ? "Online" : "Offline"}</p>
+        <p>{serverStatus === ServerStatus.Online ? "Online" : "Offline"}</p>
     )
 }
