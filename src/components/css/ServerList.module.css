@@ -1,3 +1,15 @@
-body {
-  background-color: red;
+.container {
+  width: 100%;
+}
+.gameServer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: calc(100% - 18px * 2);
+  padding: 18px;
+  border-radius: 20px;
+
+  background: var(--background-light);
+  
+  color: var(--text-color);
 }

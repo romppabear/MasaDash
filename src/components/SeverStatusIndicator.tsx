@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { ServerStatus, subscribeToServerStatus, unSubscribeFromServerStatus } from "../utils/serverStatus";
 
+import styles from "./css/ServerStatusIndicator.module.css";
+
 export default function ServerStatusIndicator(props: { server: string }) {
 
     const [serverStatus, setServerStatus] = useState(ServerStatus.Offline);
@@ -13,9 +15,9 @@ export default function ServerStatusIndicator(props: { server: string }) {
         return function cleanup() {
             unSubscribeFromServerStatus(props.server, handleStatusChange);
         };
-    });
+    }, []);
 
     return (
-        <p>{serverStatus === ServerStatus.Online ? "Online" : "Offline"}</p>
+        <div className={styles.circle} style={{background: serverStatus === ServerStatus.Online ? "green" : "grey"}}></div>
     )
 }

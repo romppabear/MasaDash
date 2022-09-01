@@ -1,0 +1,45 @@
+:root {
+    --background-dark: #041B2B;
+    --background-light: #112736;
+    --text-color: white;
+}
+
+body {
+    margin: 0;
+    background: var(--background-dark);
+    color: var(--text-color);
+    font-family: arial;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    position: relative;
+    padding: 10px;
+    background: var(--background-light);
+    color: var(--text-color);
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+/* button:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    aspect-ratio: 1 / 1;
+    width: 0%;
+    height: auto;
+    border-radius: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    transition: 200ms;
+}
+button:hover::after {
+    width: 100%;
+} */

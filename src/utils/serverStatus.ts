@@ -17,7 +17,7 @@ function serverStatusListener(event: MessageEvent, server: string, update: Subsc
 }
 
 export function subscribeToServerStatus(server: string, update: SubscriptionUpdateFunction) {
-  fetch(`http://localhost:3000/api/v1/status/${server}`, {
+  fetch(`http://localhost:3000/api/v1/server/${server}`, {
     method: "get"
   }).then(res => res.json()).then(data => update(data.status as ServerStatus));
 

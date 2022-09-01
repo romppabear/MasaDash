@@ -1,13 +1,12 @@
 export let socket: WebSocket;
 
 export default function connect() {
-    console.log("Connecting...")
     // Create WebSocket connection.
     socket = new WebSocket("ws://localhost:3000/dash");
     console.log(socket)
     // Connection opened
     socket.addEventListener("open", (event) => {
-        socket.send("Hello Server!");
+        console.log("WebSocket successfully connected!")
     });
 
     // Listen for messages
