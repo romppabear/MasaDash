@@ -1,0 +1,30 @@
+.container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background: #090e2b;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.visualPercentage {
+    position: absolute;
+    bottom: 0;
+    background: #0000007a;
+    width: 100%;
+    height: 20%;
+}
+
+.valueContainer {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+}
+
+.value {
+    font-size: 30px;
+    margin: 0;
+}
+.valueName {
+    font-size: 20px;
+    margin: 0;
+}
