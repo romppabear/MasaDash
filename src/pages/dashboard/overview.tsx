@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import ServerStatusIndicator from "../../components/SeverStatusIndicator";
 import ValueTile from "../../components/ValueTile";
 import { fetchServer, ServerMeta } from "../../utils/fetchServer";
 import { startServer, stopServer } from "../../utils/serverControl";
 
 import styles from "../css/overview.module.css";
+import DashboardLayout from "./Layout";
 
 export default function DashboardOverviewPage() {
 
@@ -18,17 +19,19 @@ export default function DashboardOverviewPage() {
     }, []);
 
     return (
-        <div>
-            <div className={styles.content}>
-                <h1>{serverMeta?.name}</h1>
+        <DashboardLayout pageName={"Overview"}>
+            <h1>{serverMeta ? serverMeta.name : "Loading..."}</h1>
                 <div className={styles.control_buttons}>
                     <ServerStatusIndicator server={tag}/>
                     <button onClick={() => startServer(tag)}>Start</button>
                     <button onClick={() => stopServer(tag)}>Stop</button>
                     <button>Restart</button>
                 </div>
-                <ValueTile valueName={"Players"} value={"6/20"} percentage={6/20}/>
-            </div>
-        </div>
+                <div className={styles.tiles}>
+                    <ValueTile valueName={"Processor"} value={"56%"} percentage={0.56}/>
+                    <ValueTile valueName={"Memory"} value={"79%"} percentage={0.79}/>
+                    <ValueTile valueName={"Players"} value={"4/20"} percentage={4/20}/>
+                </div>
+        </DashboardLayout>
     )
 }

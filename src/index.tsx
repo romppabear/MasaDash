@@ -8,6 +8,8 @@ import "./css/index.css";
 import IndexPage from "./pages";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DashboardOverviewPage from "./pages/dashboard/overview";
+import DashboardConsolePage from "./pages/dashboard/console";
+import DashboardFilesPage from "./pages/dashboard/files";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -18,6 +20,8 @@ root.render(
     <Routes>
       <Route path="/" element={<IndexPage/>} />
       <Route path="/dashboard/overview/:tag" element={<DashboardOverviewPage/>} />
+      <Route path="/dashboard/console/:tag" element={<DashboardConsolePage/>} />
+      <Route path="/dashboard/files/:tag" element={<DashboardFilesPage/>} />
     </Routes>
   </BrowserRouter>
   </React.StrictMode>

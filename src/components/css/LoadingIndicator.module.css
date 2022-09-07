@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  gap: 10px;
+}
+.container div {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  border: 2px solid whitesmoke;
+
+  animation: LoadingScale 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0ms infinite normal both;
+}
+@keyframes LoadingScale {
+  0% {
+    transform: scale(.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(.2);
+  }
+}

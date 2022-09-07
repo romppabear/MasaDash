@@ -1,3 +1,41 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.sidebar {
+    width: 300px;
+    height: 100%;
+    background: var(--background-light);
+}
+.content {
+    padding: 20px;
+    width: calc(100% - 300px - 40px);
+    height: calc(100% - 40px);
+}
+.pageTitle {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.sidebarButtons {
+    width: 100%;
+    padding: 0;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+    list-style-type: none;
+}
+.sidebarButtons button {
+    background: rgba(0, 0, 0, 0.3);
+    font-size: 15px;
+    width: 200px;
+}
+
 .control_buttons {
     display: flex;
     flex-wrap: nowrap;
@@ -6,4 +44,11 @@
 }
 .control_buttons button {
     width: 100px;
+}
+
+.tiles {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }

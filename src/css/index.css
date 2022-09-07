@@ -1,15 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
+
 :root {
-    --background-dark: #0c1339;
+    --background-dark: #030618;
     --background-light: #060a1f;
     --text-color: white;
+    --highlight: #Bc1930;
 }
 
 body {
     margin: 0;
     background: var(--background-dark);
     color: var(--text-color);
-    font-family: arial;
+    font-family: 'Sen', sans-serif;
     overflow-x: hidden;
+}
+h1 {
+    font-weight: 800;
 }
 
 a {
@@ -19,7 +25,7 @@ a {
 button {
     position: relative;
     padding: 10px;
-    background: var(--background-light);
+    background: var(--highlight);
     color: var(--text-color);
     border-radius: 10px;
     border: none;
@@ -27,19 +33,23 @@ button {
     cursor: pointer;
     overflow: hidden;
 }
-/* button:after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    aspect-ratio: 1 / 1;
-    width: 0%;
-    height: auto;
-    border-radius: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    transition: 200ms;
+
+.loadingBackground {
+    animation: loadingBackground 1s linear 0s infinite normal none;
+    background: linear-gradient(
+        90deg,
+        var(--background-dark),
+        var(--background-light),
+        var(--background-dark)
+    );
+    border-radius: 30px;
 }
-button:hover::after {
-    width: 100%;
-} */
+
+@keyframes loadingBackground {
+    from {
+        background-position: 0px 0px;
+    }
+    to {
+        background-position: 300px 0px;
+    }
+}

@@ -18,6 +18,6 @@ export default function ServerStatusIndicator(props: { server: string }) {
     }, []);
 
     return (
-        <div className={styles.circle} style={{background: serverStatus === ServerStatus.Online ? "green" : "grey"}}></div>
+        <div className={styles.circle} style={{background: serverStatus === ServerStatus.Online ? "rgb(12, 180, 0)" : "grey"}}></div>
     )
 }

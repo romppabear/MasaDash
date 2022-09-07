@@ -1,4 +1,8 @@
 .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
 }
 .gameServer {
@@ -12,4 +16,10 @@
   background: var(--background-light);
   
   color: var(--text-color);
+}
+.loadingError {
+  padding: 15px;
+  border-radius: 10px;
+  margin: 0;
+  background: var(--background-light);
 }
