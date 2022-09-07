@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
 import ServerStatusIndicator from "../../components/SeverStatusIndicator";
+import StatusControl from "../../components/StatusControl";
 import ValueTile from "../../components/ValueTile";
 import { fetchServer, ServerMeta } from "../../utils/fetchServer";
 import { startServer, stopServer } from "../../utils/serverControl";
@@ -21,12 +22,7 @@ export default function DashboardOverviewPage() {
     return (
         <DashboardLayout pageName={"Overview"}>
             <h1>{serverMeta ? serverMeta.name : "Loading..."}</h1>
-                <div className={styles.control_buttons}>
-                    <ServerStatusIndicator server={tag}/>
-                    <button onClick={() => startServer(tag)}>Start</button>
-                    <button onClick={() => stopServer(tag)}>Stop</button>
-                    <button>Restart</button>
-                </div>
+                <StatusControl tag={tag}/>
                 <div className={styles.tiles}>
                     <ValueTile valueName={"Processor"} value={"56%"} percentage={0.56}/>
                     <ValueTile valueName={"Memory"} value={"79%"} percentage={0.79}/>

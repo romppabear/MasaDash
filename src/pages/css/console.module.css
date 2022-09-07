@@ -1,0 +1,14 @@
+.console {
+  margin-top: 20px;
+  width: 70%;
+  height: 70%;
+  padding: 20px;
+  background: black;
+  color: white;
+  border-radius: 20px;
+  overflow: scroll;
+}
+.console p {
+  font-family: 'Roboto', sans-serif;
+  margin: 5px 0;
+}
