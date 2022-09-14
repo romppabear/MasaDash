@@ -54,6 +54,7 @@
 }
 
 .headerInput {
+    cursor: text;
     border: none;
     display: inline;
     font-family: inherit;
@@ -66,6 +67,10 @@
     font-weight: 800;
     font-size: 32px;
     margin: 20px 0 20px 0;
+    margin-left: 20px;
+}
+.headerInput:enabled {
+    border-bottom: 2px solid var(--highlight);
 }
 
 .editSaveCancel {

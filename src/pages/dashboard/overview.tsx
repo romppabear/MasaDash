@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom"
-import ServerStatusIndicator from "../../components/SeverStatusIndicator";
+import { useEffect, useRef, useState } from "react";
+import { useParams } from "react-router-dom"
 import StatusControl from "../../components/StatusControl";
 import ValueTile from "../../components/ValueTile";
+import changeServerName from "../../utils/changeServerName";
 import { fetchServer, ServerMeta } from "../../utils/fetchServer";
-import { startServer, stopServer } from "../../utils/serverControl";
 
 import styles from "../css/overview.module.css";
 import DashboardLayout from "./Layout";
@@ -12,7 +11,10 @@ import DashboardLayout from "./Layout";
 export default function DashboardOverviewPage() {
 
     const [serverMeta, setServerMeta] = useState<ServerMeta | null>(null)
-    const [serverName, setServerName] = useState("Loading...")
+    const [serverName, setServerName] = useState("Loading...");
+    const [isNameEditable, setNameEditable] = useState(false);
+
+    const nameInputRef = useRef<HTMLInputElement>(null);
 
     const { tag } = useParams() as { tag: string };
 
@@ -21,20 +23,42 @@ export default function DashboardOverviewPage() {
             setServerMeta(meta);
             setServerName(meta.name);
         });
-    }, []);
+    }, [tag]);
+
+    useEffect(() => {
+        if (isNameEditable) {
+            nameInputRef.current?.focus();
+        }
+    });
 
     return (
         <DashboardLayout pageName={"Overview"}>
-            <form onSubmit={e => {
-                // TODO: fetch
+            <form onSubmit={async e => {
                 e.preventDefault()
+                try {
+                    await changeServerName(tag, serverName);
+                    setServerMeta(oldMeta => {
+                        if (oldMeta) {
+                            return {...oldMeta, name: serverName}
+                        }
+                        return null;
+                    });
+                    setNameEditable(false);
+                } catch (err) {}
             }}>
-                <input className={styles.headerInput} value={serverName} onChange={e => setServerName(e.target.value)} maxLength={20} />
+                <button type="button" className="material-symbols-outlined" onClick={e => setNameEditable(!isNameEditable)}>
+                    edit
+                </button>
+                <input disabled={!isNameEditable} ref={nameInputRef} className={styles.headerInput} value={serverName} onChange={e => setServerName(e.target.value)} maxLength={20} />
+                
                 <div className={styles.editSaveCancel} style={{
-                    display: serverMeta?.name === undefined || serverMeta?.name === serverName ? "none" : "flex"
+                    display: !isNameEditable ? "none" : "flex"
                 }}>
-                    <button className={styles.editCancel} onClick={() => setServerName(serverMeta?.name || "")}>Cancel</button>
-                    <button>Save</button>
+                    <button type="reset" className={styles.editCancel} onClick={() => {
+                        setServerName(serverMeta?.name || "");
+                        setNameEditable(false);
+                    }}>Cancel</button>
+                    <button type="submit">Save</button>
                 </div>
             </form>
             <StatusControl tag={tag} />
