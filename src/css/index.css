@@ -5,6 +5,7 @@
     --background-light: #060a1f;
     --text-color: white;
     --highlight: #Bc1930;
+    --highlight-dark: #991627;
 }
 
 body {
@@ -32,6 +33,11 @@ button {
     outline: none;
     cursor: pointer;
     overflow: hidden;
+    transition: scale 200ms, background 200ms;
+}
+button:hover {
+    transform: scale(1.02);
+    background: var(--highlight-dark);
 }
 
 .loadingBackground {

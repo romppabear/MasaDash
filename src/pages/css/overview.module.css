@@ -52,3 +52,30 @@
     flex-wrap: wrap;
     gap: 20px;
 }
+
+.headerInput {
+    border: none;
+    display: inline;
+    font-family: inherit;
+    font-size: inherit;
+    padding: none;
+    width: auto;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-weight: 800;
+    font-size: 32px;
+    margin: 20px 0 20px 0;
+}
+
+.editSaveCancel {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.editSaveCancel button {
+    width: 100px;
+}
+.editCancel {
+    background: #373737;
+}
