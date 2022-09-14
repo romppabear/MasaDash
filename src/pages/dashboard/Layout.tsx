@@ -17,9 +17,10 @@ export default function DashboardLayout(props: {children: React.ReactNode, pageN
       </div>
       <div className={styles.page}>
         <h2 className={styles.pageTitle}>{props.pageName}</h2>
-        <div className={styles.content}>
-          {props.children}
-        </div>
+        {props.children}
+        {/* <div className={styles.content}>
+          
+        </div> */}
       </div>
       <footer className={styles.footer}>
         <span className={styles.footerServerTag}>{tag}</span>
