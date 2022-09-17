@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom"
+import PlayerList from "../../components/PlayerList";
 import StatusControl from "../../components/StatusControl";
 import ValueTile from "../../components/ValueTile";
 import changeServerName from "../../utils/changeServerName";
@@ -67,6 +68,8 @@ export default function DashboardOverviewPage() {
                 <ValueTile valueName={"Memory"} value={"79%"} percentage={0.79} />
                 <ValueTile valueName={"Players"} value={"4/20"} percentage={4 / 20} />
             </div>
+            <h2>Players</h2>
+            <PlayerList/>
         </DashboardLayout>
     )
 }

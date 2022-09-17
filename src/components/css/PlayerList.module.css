@@ -1,0 +1,31 @@
+.circle {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: green;
+}
+.container {
+    width: 65%;
+    list-style-type: none;
+    padding-left: 0;
+    background: var(--background-light);
+    padding: 12px;
+    border-radius: 10px;
+}
+.container button {
+    width: 70px;
+}
+.player {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+}
+.player div {
+    display: flex;
+    gap: 15px;
+}
+.playerName {
+    margin: 0;
+}
